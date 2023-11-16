@@ -1,55 +1,46 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
 
-import Colors from '../../constants/Colors';
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import {Tabs} from 'expo-router';
+import {useColorScheme } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import {useTheme } from '@react-navigation/native';
+import { planetHeaderHider } from '../../helpers/routeHeaderHider';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  
+  const colorScheme = useColorScheme(); 
+  const {colors} = useTheme(); //use to change styles for light and dark mode
 
+ 
   return (
     <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+      
+      screenOptions={({route})=> {
+        return {
+          tabBarActiveTintColor: 'green',  //overides the ThemeProp primary color
+          // tabBarStyle: {backgroundColor: 'white'} //set styles with use theme here
+          headerTitleAlign: 'center',
+          headerShown: planetHeaderHider(route) //used to remove PLANETS HEADER when viewing an individual planet,
+          
+
+        }
       }}>
+
       <Tabs.Screen
-        name="index"
+        name='(planets)'
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
+          tabBarLabel: 'Planets',
+          title: 'PLANETS',
+          tabBarIcon: () => <Ionicons name='planet' color='white' size={25} />,
+          headerRight:() => <Ionicons name='settings-outline' color='white' size={25} /> //turn into a pressable with a link to a settings modal
+        }} />
       <Tabs.Screen
-        name="two"
+        name='news'
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
+          tabBarLabel: 'News',
+          title: 'NEWS',
+          tabBarIcon: ()=> <Ionicons  name='book' color='white' size={25} />
+        }} />
+
     </Tabs>
   );
 }
