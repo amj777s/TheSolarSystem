@@ -1,6 +1,9 @@
-import { Stack } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 
 export default function PlanetSelectorNav() {
+
+    const {planet}:{planet:string} = useLocalSearchParams();
+    
     return (
         <Stack initialRouteName="index" screenOptions= {{headerTitleAlign: 'center'}}>
             <Stack.Screen 
@@ -13,7 +16,7 @@ export default function PlanetSelectorNav() {
                 name='[planet]'
                 options={{
                     headerShown: true,
-                    headerTitle: 'placeholder'
+                    headerTitle: planet?.toUpperCase()
                 }}
             />
         

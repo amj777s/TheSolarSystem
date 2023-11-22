@@ -1,15 +1,15 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Overview from '../../../components/Overview';
+import Overview from '../../../planetScreens/Overview';
 import Facts from '../../../components/Facts';
 import Exploration from '../../../components/Exploration';
-import { RouteProp, ParamListBase } from '@react-navigation/native';
 import { useLocalSearchParams } from 'expo-router';
+import { planet } from 'types';
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function PlanetTabLayout(){
     
-    const {planet}: {planet:string} = useLocalSearchParams();
+    const {planet}: {planet:planet} = useLocalSearchParams();
     
     return (
     <Tab.Navigator >

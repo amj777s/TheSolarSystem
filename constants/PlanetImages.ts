@@ -7,9 +7,7 @@ const planetImages = {
     Jupiter: require('../assets/images/planets/jupiter.webp'),
     Saturn: require('../assets/images/planets/saturn.webp'),
     Neptune: require('../assets/images/planets/neptune.webp'),
-    Uranus: require('../assets/images/planets/uranus.webp'),
-
-
+    Uranus: require('../assets/images/planets/uranus.webp')
 }
 
 export default planetImages;
