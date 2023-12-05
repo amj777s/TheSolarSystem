@@ -52,7 +52,7 @@ function RootLayoutNav() {
       <SafeAreaProvider>
         <Stack initialRouteName='(tabs)'>
           <Stack.Screen name="(tabs)" options={{ headerShown: false}} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="POTD" options={{ presentation: 'modal' }} />
         </Stack>
       </SafeAreaProvider>
     </ThemeProvider>

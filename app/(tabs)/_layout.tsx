@@ -4,6 +4,7 @@ import {useColorScheme } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import {useTheme } from '@react-navigation/native';
 import { planetHeaderHider } from '../../helpers/routeHeaderHider';
+import { iconSize } from 'constants/GlobalStyles';
 
 export default function TabLayout() {
   
@@ -30,15 +31,15 @@ export default function TabLayout() {
         options={{
           tabBarLabel: 'Planets',
           title: 'PLANETS',
-          tabBarIcon: () => <Ionicons name='planet' color='white' size={25} />,
-          headerRight:() => <Ionicons name='settings-outline' color='white' size={25} /> //turn into a pressable with a link to a settings modal
+          tabBarIcon: () => <Ionicons name='planet' color={colors.primary} size={iconSize} />,
+          headerRight:() => <Ionicons name='settings-outline' color='white' size={iconSize} /> //turn into a pressable with a link to a settings modal
         }} />
       <Tabs.Screen
-        name='news'
+        name='images'
         options={{
-          tabBarLabel: 'News',
-          title: 'NEWS',
-          tabBarIcon: ()=> <Ionicons  name='book' color='white' size={25} />
+          tabBarLabel: 'Images',
+          title: 'IMAGES',
+          tabBarIcon: ()=> <Ionicons  name='images-outline' color={colors.primary} size={iconSize} />
         }} />
 
     </Tabs>

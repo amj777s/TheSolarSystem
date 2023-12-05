@@ -7,3 +7,15 @@ export type PlanetFact = {
     img: any
 };
 
+export type PlanetInfo = {
+    title: string,
+    paragraphs: string [],
+    img?: any
+}
+
+export type PlanetStory = {
+    title: string,
+    blurb: string,
+    url: string,
+    img?: any
+}

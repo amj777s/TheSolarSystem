@@ -1,9 +1,9 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
 import PLANETFACTS from 'constants/PlanetOverview';
 import { PlanetFact, planet } from 'types';
-import FactContainer from '@Components/FactContainer';
+import OverviewContainer from '@Components/OverviewContainer';
 
 
 export default function Overview({route}: {route:any}) {
@@ -16,9 +16,8 @@ export default function Overview({route}: {route:any}) {
     return (
         <ScrollView style={[styles.container, cssInsets]} contentContainerStyle={styles.contentContainer}>
             {PlanetFacts.map(info => {
-                return <FactContainer key={info.title} planetFact={info}/>
-            })}
-           
+                return <OverviewContainer key={info.title} planetFact={info}/>
+            })}    
         </ScrollView>
     )
 }

@@ -1,7 +1,7 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Overview from '../../../planetScreens/Overview';
-import Facts from '../../../components/Facts';
-import Exploration from '../../../components/Exploration';
+import Facts from '../../../planetScreens/Facts';
+import Exploration from '../../../planetScreens/Exploration';
 import { useLocalSearchParams } from 'expo-router';
 import { planet } from 'types';
 

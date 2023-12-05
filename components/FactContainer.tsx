@@ -1,48 +1,40 @@
-import { PlanetFact } from "types";
-import { View, Image, Text, StyleSheet } from "react-native";
+import { PlanetInfo } from "types";
 import { useTheme } from "@react-navigation/native";
-import { headerFontWeight, headerSize, paragraphSize } from "constants/GlobalStyles";
+import {View, Text, StyleSheet} from 'react-native';
+import { headerSize, headerFontWeight, paragraphSize, paragraphLineHeight} from "constants/GlobalStyles";
 
-export default function FactContainer({
-    planetFact
-}: {
-    planetFact: PlanetFact
-}) {
-
-    const { colors } = useTheme();
-
-    // Each container will be a picture with a title underneath centered in the middle of the screen and then below it, the fact
+export default function FactContainer({fact}: {fact: PlanetInfo}) {
+    const {colors} = useTheme();
     return (
         <View style={styles.container}>
-            <View style={styles.headerContainer}>
-                <Image
-                    source={planetFact.img}
-                    style={{ height: 150, width: 150, borderRadius: 150 }} />
-                <Text style={[{ color: colors.primary }, styles.title]}>{planetFact.title}</Text>
+            <Text style={[styles.title, {color: colors.primary}]}>{fact.title}</Text>
+            <View style={styles.paragraphContainer}>
+                {fact.paragraphs.map((paragraph,index) => {
+                    const paragraphArray = paragraph.split('\n').map(sentence => sentence.trim()); //fixes indentation issue in PlanetFacts
+                    const correctedParagraph = paragraphArray.join(' ');
+                    return <Text key={index} style={[styles.paragraph, {color: colors.primary}]} >{correctedParagraph}</Text>
+                })}
             </View>
-            <Text style={[{ color: colors.primary }, styles.fact]}>{planetFact.fact}</Text>
-
         </View>
     )
 }
-
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "column",
-        alignItems: 'center',
-        gap: 10, 
-        padding: 12
-    },
-    headerContainer: {
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 20
+        flexDirection: 'column',
+        gap: 10,
+        borderWidth: 2,
+        borderColor: 'red'
     },
     title: {
         fontWeight: headerFontWeight,
         fontSize: headerSize
     },
-    fact: {
-        fontSize: paragraphSize
+    paragraphContainer: {
+        flexDirection: 'column',
+        gap: 25
+    },
+    paragraph: {
+        fontSize: paragraphSize,
+        lineHeight: paragraphLineHeight
     }
 })
