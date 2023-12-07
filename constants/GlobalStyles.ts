@@ -11,6 +11,7 @@ export const button =  {
     bgUnPressed: '#0081f1',
     bgPressed: '#0467be',
     borderRadius: 6,
-    padding: 10
+    padding: 10,
+    width: '30%'
 }
 

@@ -2,7 +2,7 @@ import { Link } from 'expo-router';
 import { StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@react-navigation/native';
-import { Text, View, Button } from 'react-native';
+import { Text, View} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { headerFontWeight, headerSize, iconSize } from 'constants/GlobalStyles';
 
@@ -17,6 +17,24 @@ export default function TabTwoScreen() {
       <View style={styles.InfoContainer}>
         <Text style={[{color: colors.primary}, styles.title]}>Picture of the Day</Text>
         <Link href='/POTD' asChild>
+        <Ionicons name = 'arrow-forward-circle' color={colors.primary} size={iconSize}/>
+        </Link>
+      </View>
+      <View style={styles.InfoContainer}>
+        <Text style={[{color: colors.primary}, styles.title]}>Spirit Rover Pictures</Text>
+        <Link href={{pathname: '/rovers/[rover]', params: {rover: 'spirit'}}} asChild>
+        <Ionicons name = 'arrow-forward-circle' color={colors.primary} size={iconSize}/>
+        </Link>
+      </View>
+      <View style={styles.InfoContainer}>
+        <Text style={[{color: colors.primary}, styles.title]}>Curiosity Rover Pictures</Text>
+        <Link href={{pathname: '/rovers/[rover]', params: {rover: 'curiosity'}}} asChild>
+        <Ionicons name = 'arrow-forward-circle' color={colors.primary} size={iconSize}/>
+        </Link>
+      </View>
+      <View style={styles.InfoContainer}>
+        <Text style={[{color: colors.primary}, styles.title]}>Opportunity Rover Pictures</Text>
+        <Link href={{pathname: '/rovers/[rover]', params: {rover: 'opportunity'}}} asChild>
         <Ionicons name = 'arrow-forward-circle' color={colors.primary} size={iconSize}/>
         </Link>
       </View>

@@ -50,9 +50,10 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
       <SafeAreaProvider>
-        <Stack initialRouteName='(tabs)'>
+        <Stack initialRouteName='(tabs)' screenOptions={{headerTitleAlign: 'center'}}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false}} />
           <Stack.Screen name="POTD" options={{ presentation: 'modal' }} />
+          <Stack.Screen name = 'rovers/[rover]' options={{title: 'Curiosity',presentation: 'modal'}}></Stack.Screen>
         </Stack>
       </SafeAreaProvider>
     </ThemeProvider>
