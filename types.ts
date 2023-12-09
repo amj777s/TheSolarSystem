@@ -3,6 +3,11 @@ export type planet = 'mercury'| 'venus' | 'earth' | 'mars' | 'jupiter' | 'saturn
 
 export type rover = 'curiosity' | 'opportunity' | 'spirit'
 
+export type RoverImage = {
+    url: string,
+    imgRatio: number
+}
+
 export type PlanetFact = {
     title: string,
     fact: string,

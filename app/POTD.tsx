@@ -7,7 +7,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import useSWR from 'swr';
 
 async function getPOTD(url: string) {
+    
     const response = await fetch(url);
+    
     if (response.ok) {
         const data = await response.json();
         let imgData: {ratio: number, url: string} = {} as {ratio: number, url: string} ;
@@ -52,7 +54,7 @@ export default function POTD() {
             <Text style={[{ color: colors.primary }, styles.title]}>{data?.title}</Text>
             <Image
                 style={{ width: width, height: height, resizeMode: 'contain' }}
-                src={data?.imgData.url} 
+                source={{uri: data?.imgData.url}}
             />
             <Text style={[{ color: colors.primary }, styles.paragraph]}>{data?.explanation}</Text>
         </ScrollView>

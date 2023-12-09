@@ -19,6 +19,7 @@ export default function CameraSelector({
     const [isActive, setActive] = useState<boolean>(false);
 
 
+
     const handleCamera = (camera: string): void => {
         setCamera(camera);
         setActive(false);
@@ -57,7 +58,8 @@ const styles = StyleSheet.create({
     NonActiveContainer:{
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        width: "100%"
     },
     ActiveContainer: {
         flexDirection: 'column',
