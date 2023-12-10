@@ -40,8 +40,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         gap: 25,
-        borderColor: 'red',
-        borderWidth: 3
+        paddingBottom: 15
     },
     
     title: {

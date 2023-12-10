@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         gap: 10,
-        borderWidth: 2,
-        borderColor: 'red'
+        paddingBottom: 15
+      
     },
     title: {
         fontWeight: headerFontWeight,

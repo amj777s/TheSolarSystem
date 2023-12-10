@@ -12,9 +12,6 @@ export default function RoverImageContainer({
     const dimensions = useWindowDimensions();
     const width = dimensions.width; //keeps width of picture inside of scrollview boundaries
 
-    const getImgData = async (url:string)=> {
-        return await Image.getSize(url, (width, height) => height/width)
-    }
 
     let content;
    // // Change in RoverImageContainer as well

@@ -36,7 +36,7 @@ export default function POTD() {
     const cssInsets = {  paddingBottom: insets.bottom, paddingLeft: insets.left,paddingRight: insets.right};
     const { colors } = useTheme();
     const dimensions = useWindowDimensions();
-    const width = dimensions.width - 2 * cssInsets.paddingLeft; //keeps width of picture inside of scrollview boundaries
+    const width = dimensions.width; //keeps width of picture inside of scrollview boundaries
     const { data, error, isLoading } = useSWR('https://api.nasa.gov/planetary/apod?api_key=KuoNCsCCqDgzNasZWeKoIbFhGeQvNiQEQC70owHn', getPOTD); //hide api key in future
     const height = data?.imgData.ratio ? data?.imgData.ratio * width : 0;
 
@@ -53,7 +53,8 @@ export default function POTD() {
         <ScrollView style={[styles.container, cssInsets]} showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
             <Text style={[{ color: colors.primary }, styles.title]}>{data?.title}</Text>
             <Image
-                style={{ width: width, height: height, resizeMode: 'contain' }}
+                width={width}
+                height={height}
                 source={{uri: data?.imgData.url}}
             />
             <Text style={[{ color: colors.primary }, styles.paragraph]}>{data?.explanation}</Text>
@@ -69,9 +70,7 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: 'red',
-        borderWidth: 2,
+        gap: 15
        
         
 

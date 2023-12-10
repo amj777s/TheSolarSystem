@@ -11,6 +11,9 @@ import CameraSelector from "@Components/CameraSelector";
 import RoverImageContainer from "@Components/RoverImageContainer";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+const scrollViewPadding = 25;
+
+
 export default function Rover() {
     const insets = useSafeAreaInsets();
     const cssInsets = { paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right };
@@ -69,7 +72,7 @@ export default function Rover() {
                         photos.push({ url: info.img_src, imgRatio: ratio } as RoverImage)
                     })
                 }
-
+                console.log('done processing...')
                 setPhotos(photos);
             }
             else {
@@ -82,7 +85,7 @@ export default function Rover() {
 
     return (
         <ScrollView style={[styles.container, cssInsets]} contentContainerStyle={styles.contentContainer}>
-
+            <View style={styles.controlContainer}>
             {/*Date Display*/}
             <View style={styles.dateContainer}>
                 <Text style={[{ color: colors.primary }, styles.title]}>{`Date: ${formattedDate}`}</Text>
@@ -122,6 +125,7 @@ export default function Rover() {
                 ]}>
                 <Text style={{ color: colors.primary, fontSize: paragraphSize, textAlign: 'center' }}>Search</Text>
             </Pressable>
+            </View>
 
             {/* Photo Container */}
             <RoverImageContainer photos={photos} />
@@ -132,15 +136,20 @@ export default function Rover() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        // borderWidth: 2,
-        // borderColor: 'red',
+        flex: 1
 
     },
     contentContainer: {
         alignItems: 'center',
         gap: 15,
-        paddingBottom: 25
+        paddingBottom: 25,
+        paddingTop: 25
+    },
+    controlContainer: {
+        width: '100%',
+        justifyContent: 'center',
+        gap: 15,
+        alignItems: 'center'
     },
     dateContainer: {
         flexDirection: 'row',
