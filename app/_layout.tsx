@@ -1,5 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { ThemeProvider } from '@react-navigation/native';
+import { ThemeProvider, useTheme } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
@@ -46,14 +46,15 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  const roverHeadColor = colorScheme === 'dark'? DarkTheme.colors.primary : LightTheme.colors.primary;
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
       <SafeAreaProvider>
         <Stack initialRouteName='(tabs)' screenOptions={{headerTitleAlign: 'center'}}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false}} />
-          <Stack.Screen name="POTD" options={{ presentation: 'modal' }} />
-          <Stack.Screen name = 'rovers/[rover]' options={({ route }) => ({ title: route.params.rover.toUpperCase(), presentation: 'modal' })}></Stack.Screen>
+          <Stack.Screen name="POTD"  options={{ presentation: 'modal',title: 'Picture of the Day', headerTintColor: roverHeadColor }} />
+          <Stack.Screen name = 'rovers/[rover]' options={({ route }) => ({ title: route.params.rover.toUpperCase(), presentation: 'modal', headerTintColor: roverHeadColor })}></Stack.Screen>
         </Stack>
       </SafeAreaProvider>
     </ThemeProvider>

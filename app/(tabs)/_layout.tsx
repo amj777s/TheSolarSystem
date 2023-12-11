@@ -20,6 +20,7 @@ export default function TabLayout() {
           tabBarActiveTintColor: 'green',  //overides the ThemeProp primary color
           // tabBarStyle: {backgroundColor: 'white'} //set styles with use theme here
           headerTitleAlign: 'center',
+          headerTintColor: colors.primary,
           headerShown: planetHeaderHider(route) //used to remove PLANETS HEADER when viewing an individual planet,
           
 
@@ -31,8 +32,9 @@ export default function TabLayout() {
         options={{
           tabBarLabel: 'Planets',
           title: 'PLANETS',
+  
           tabBarIcon: () => <Ionicons name='planet' color={colors.primary} size={iconSize} />,
-          headerRight:() => <Ionicons name='settings-outline' color='white' size={iconSize} /> //turn into a pressable with a link to a settings modal
+          headerRight:() => <Ionicons name='settings-outline' color={colors.primary} size={iconSize} /> //turn into a pressable with a link to a settings modal
         }} />
       <Tabs.Screen
         name='images'

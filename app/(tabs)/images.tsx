@@ -16,8 +16,8 @@ export default function TabTwoScreen() {
 
   return (
     <View style={[styles.container, cssInsets]}>
-      <View style={[styles.polaroidContainer, { height: polaroidHeight }]}>
-        <View style={styles.polaroidContentContainer}>
+      <View style={[styles.polaroidContainer, { height: polaroidHeight, backgroundColor: colors.primary }]}>
+        <View style={[styles.polaroidContentContainer, {backgroundColor: colors.background}]}>
           <View style={styles.InfoContainer}>
             <Text style={[{ color: colors.primary }, styles.title]}>Picture of the Day</Text>
             <Link href='/POTD' asChild>
@@ -48,7 +48,7 @@ export default function TabTwoScreen() {
             source={require('../../assets/images/nasa-logo.webp')}
             style={{height:50, width:50}}
           />
-          <Text style={styles.title}>Mars Rovers</Text>
+          <Text style={[styles.title, {color: colors.text}]}>Mars Rovers</Text>
         </View>
       </View>
     </View>
@@ -68,16 +68,12 @@ const styles = StyleSheet.create({
   polaroidContainer: {
     alignItems: 'center',
     width: '100%',
-    backgroundColor: 'white',
     paddingTop: '7.5%',
-    borderColor: 'green',
-    borderWidth: 2
   },
 
   polaroidContentContainer: {
     width: '85%',
     height: '75%',
-    backgroundColor: 'black',
     justifyContent: 'center',
     gap: 50
   },

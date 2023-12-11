@@ -18,6 +18,7 @@ export default function Rover() {
     const insets = useSafeAreaInsets();
     const cssInsets = { paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right };
     const { rover }: { rover: rover } = useLocalSearchParams();
+    const [isLoading, setLoading] = useState<boolean>(false);
     const cameras = Cameras[rover];
     const [photos, setPhotos] = useState<RoverImage[] | undefined>();
     const [date, setDate] = useState<Date>(new Date());
@@ -80,6 +81,8 @@ export default function Rover() {
             }
 
         }
+        
+        setLoading(false);
     }
 
 
@@ -118,7 +121,7 @@ export default function Rover() {
 
             {/* Search Button */}
             <Pressable
-                onPress={() => getImages(formattedDate, currentCamera, rover)}
+                onPress={() => {getImages(formattedDate, currentCamera, rover); setLoading(true)}}
                 style={({ pressed }) => [
                     { backgroundColor: pressed ? button.bgPressed : button.bgUnPressed, borderRadius: button.borderRadius, padding: button.padding },
                     styles.button, { marginHorizontal: 'auto' }
@@ -128,7 +131,7 @@ export default function Rover() {
             </View>
 
             {/* Photo Container */}
-            <RoverImageContainer photos={photos} />
+            <RoverImageContainer photos={photos} isLoading={isLoading} />
 
         </ScrollView>
     )

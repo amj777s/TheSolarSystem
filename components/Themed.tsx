@@ -6,20 +6,22 @@
 import { Text as DefaultText, View as DefaultView } from 'react-native';
 
 const light: ColorsStyle = {
-  primary: 'blue',
+  primary: '#000',
   background: '#fff',
-  card: 'red',
-  text: '#000',
-  border: 'orange',
-  notification: 'red'
+  card: '#fff',
+  text: '#fff',
+  border: 'gray',
+  notification: 'red',
+
+
 
 }
  
 const dark: ColorsStyle = {
-  primary: 'white',
+  primary: '#fff',
   background: '#000',
   card: '#000',
-  text: '#fff',
+  text: '#000', 
   border: 'gray',
   notification: 'red'
 
